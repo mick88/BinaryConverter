@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="maxBinLen">32</integer>
+    <integer name="maxHexLen">8</integer>
+    <integer name="maxBinLines">2</integer>
+</resources>

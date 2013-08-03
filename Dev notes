@@ -1,0 +1,22 @@
+todo:
+
+1.1
+select all on focus			DONE
+fix binary empty on zero	DONE
+
+1.2
++1 and -1 button 			DONE
+keyboard always visible 	DONE
+locked in portrait			DONE
+bit shifting				DONE
+
+1.3
+fixed android 2.2 compatibility
+
+1.4
+fixed design on wider screen and in landscape mode - separated bit shift buttons
+removed portrait lock
+
+1.5
+move buttons to menu
+create class to store and convert date

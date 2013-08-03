@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">BinaryConverter</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Binary Converter</string>
+    <string name="bitNumberTxt">1 bit</string>
+    <string name="plusOne">+1</string>
+    <string name="minusOne">-1</string>
+    <string name="zeroBtn">0</string>
+    <string name="shiftLeft">&lt;&lt;</string>
+    <string name="shiftRight">>></string>
+    <string name="ip">IP address</string>
+    <string name="defaultIp">0.0.0.0</string>
+    <string name="characters">ASCII character:</string>
+    <string name="defaultAscii">\\0</string>
+    <string name="iplabel">IP address:</string>
+    <string name="ascii_hint">ASCII</string>
+    <string name="ascii_label">ASCII:</string>
+    <string name="anyBase">Custom base:</string>
+    <string name="any_base">Custom base</string>
+    <string name="color_label">Color:</string>
+    <string name="color_hint">Color</string>
+
+</resources>
