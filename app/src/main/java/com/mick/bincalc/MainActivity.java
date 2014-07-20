@@ -19,7 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity
+public class MainActivity extends Activity implements OnItemSelectedListener
 {
 	EditText decView, hexView, binView, ipView, charView, anyBaseView, colorView;
 	Spinner anyBaseSpinner;
@@ -31,7 +31,21 @@ public class MainActivity extends Activity
 			defaultBaseSelection=defaultBase-Number.minBase;	
 	int selectedBase = defaultBase;
 
-	public static enum DataType
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
+        selectedBase = position + Number.minBase;
+
+        converting=true;
+        setTextKeepSelection(anyBaseView, number.toAnyBase(selectedBase));
+        converting=false;
+    }
+
+    public void onNothingSelected(AdapterView<?> parent)
+    {
+
+    }
+
+    public static enum DataType
 	{
 		Decimal, Hexadecimal, Binary, none, Ascii, IpAddress, AnyBase
 	};
@@ -184,21 +198,7 @@ public class MainActivity extends Activity
 		anyBaseSpinner.setAdapter(dataAdapter);
 		anyBaseSpinner.setSelection(defaultBaseSelection);
 		
-		anyBaseSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				selectedBase = arg2 + Number.minBase;
-				
-				converting=true;
-				setTextKeepSelection(anyBaseView, number.toAnyBase(selectedBase));
-				converting=false;
-			}
-
-			public void onNothingSelected(AdapterView<?> arg0) {
-				
-			}
-		});
+		anyBaseSpinner.setOnItemSelectedListener(this);
 		
 		
 		//Output number of bits
