@@ -6,20 +6,20 @@
         android:title="Reset"/>
     <item
         android:id="@+id/menuIncrement"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="+1"/>
     <item
         android:id="@+id/menuDecrement"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="-1"/>
     <item
         android:id="@+id/menuShiftLeft"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:titleCondensed="@string/shift_left_condensed"
         android:title="Shift left"/>
     <item
         android:id="@+id/menuShiftRight"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:titleCondensed="@string/shift_right_condensed"
         android:title="Shift right"/>
 </menu>
