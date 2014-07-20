@@ -122,7 +122,7 @@ public class Number
 				
 				if (c >= '0' && c <= '9') val = c-'0';
 				else if (c >= 'A' && c <= 'Z') val = c-'A'+10;
-				else if (c >= 'a' && c <= 'a') val = c-'a'+10;
+				else if (c >= 'a' && c <= 'z') val = c-'a'+10;
 				else //unexpected character
 				{
 					correctInput=false;
