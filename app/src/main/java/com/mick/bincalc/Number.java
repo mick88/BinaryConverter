@@ -6,7 +6,7 @@ import java.util.Locale;
 public class Number
 {
 	/*class for storing data in any format*/
-	private Long number=0L;
+	private long number=0L;
 	
 	private boolean correctInput=true;
 	private int originalBase=10;
