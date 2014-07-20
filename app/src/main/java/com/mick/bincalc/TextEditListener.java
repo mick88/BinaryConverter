@@ -9,10 +9,10 @@ import android.widget.Toast;
  */
 public class TextEditListener implements TextWatcher
 {
-    private final MainActivity.DataType dataType;
+    private final int dataType;
     private final MainActivity mainActivity;
 
-    public TextEditListener(MainActivity.DataType dataType, MainActivity mainActivity)
+    public TextEditListener(int dataType, MainActivity mainActivity)
     {
         this.dataType = dataType;
         this.mainActivity = mainActivity;

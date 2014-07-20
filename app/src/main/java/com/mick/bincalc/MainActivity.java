@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +16,18 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnItemSelectedListener
 {
+    public static final int
+            DATA_TYPE_DECIMAL = 10,
+            DATA_TYPE_HEXADECIMAL = 16,
+            DATA_TYPE_BINARY = 2,
+            DATA_TYPE_NONE = 0,
+            DATA_TYPE_ASCII = -1,
+            DATA_TYPE_IP_ADDRESS = -2,
+            DATA_TYPE_ANY_BASE = -3;
+    
 	EditText decView, hexView, binView, ipView, charView, anyBaseView, colorView;
 	Spinner anyBaseSpinner;
 	TextView bitNumber;
@@ -45,14 +52,10 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 
     }
 
-    public static enum DataType
-	{
-		Decimal, Hexadecimal, Binary, none, Ascii, IpAddress, AnyBase
-	};
 
 	boolean converting = false;
 
-	public void convertNumber(String numberStr, DataType type)
+	public void convertNumber(String numberStr, int type)
 	{
 		if (converting)
 		{
@@ -68,29 +71,29 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		{
 			switch (type)
 			{
-				case IpAddress:
+				case DATA_TYPE_IP_ADDRESS:
 					number.fromIpAddress(numberStr);
 					break;
 				
-				case none: //this must fall through to dec
-				case Decimal:
-					number = new Number(numberStr, 10);
+				case DATA_TYPE_NONE: //this must fall through to dec
+				case DATA_TYPE_DECIMAL:
+					number = new Number(numberStr, DATA_TYPE_DECIMAL);
 					break;
 	
-				case Hexadecimal:
-					number = new Number(numberStr, 16);				
+				case DATA_TYPE_HEXADECIMAL:
+					number = new Number(numberStr, DATA_TYPE_HEXADECIMAL);
 					break;
 	
-				case Binary:
-					number = new Number(numberStr, 2);					 
+				case DATA_TYPE_BINARY:
+					number = new Number(numberStr, DATA_TYPE_BINARY);
 					break;
 					
-				case Ascii:
+				case DATA_TYPE_ASCII:
 					number = new Number();
 					number.fromChar(numberStr);
 					break;
 					
-				case AnyBase:
+				case DATA_TYPE_ANY_BASE:
 					number = new Number(numberStr, selectedBase);
 					break;
 			}
@@ -98,28 +101,28 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		
 		bitNumber.setText(String.format("%d bits", number.getBitSize()));
 		
-		if (type != DataType.Decimal)
+		if (type != DATA_TYPE_DECIMAL)
 		{
-			decView.setText(number.toAnyBase(10));
+			decView.setText(number.toAnyBase(DATA_TYPE_DECIMAL));
 		}
 		 
 
-		if (type != DataType.Hexadecimal || (number.isInputCorrect() == false && number.getOriginalBase() == 16))
+		if (type != DATA_TYPE_HEXADECIMAL || (number.isInputCorrect() == false && number.getOriginalBase() == DATA_TYPE_HEXADECIMAL))
 		{
-			setTextKeepSelection(hexView, number.toAnyBase(16));
+			setTextKeepSelection(hexView, number.toAnyBase(DATA_TYPE_HEXADECIMAL));
 		}
 		
-		if (type != DataType.IpAddress)
+		if (type != DATA_TYPE_IP_ADDRESS)
 		{
 			ipView.setText(number.toIpAddress());
 		}
 		
-		if (type != DataType.Binary || (number.isInputCorrect() == false && number.getOriginalBase() == 2))
+		if (type != DATA_TYPE_BINARY || (number.isInputCorrect() == false && number.getOriginalBase() == DATA_TYPE_BINARY))
 		{
-			setTextKeepSelection(binView, number.toAnyBase(2));			
+			setTextKeepSelection(binView, number.toAnyBase(DATA_TYPE_BINARY));
 		}
 		
-		if (type != DataType.Ascii)
+		if (type != DATA_TYPE_ASCII)
 		{
 			
 			if (number.toChar() == null)
@@ -135,14 +138,14 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 			}
 		}
 		
-		if (type != DataType.AnyBase || (number.isInputCorrect() == false && number.getOriginalBase() == selectedBase))
+		if (type != DATA_TYPE_ANY_BASE || (number.isInputCorrect() == false && number.getOriginalBase() == selectedBase))
 		{
 			setTextKeepSelection(anyBaseView, number.toAnyBase(selectedBase));
 		}
 		
 		int color = (int) (0xFF000000 | (0xFFFFFF & number.toDecimal()));
 		Number colorn = new Number(color & 0xFFFFFF);
-		String colorHex = colorn.toAnyBase(16);
+		String colorHex = colorn.toAnyBase(DATA_TYPE_HEXADECIMAL);
 		while (colorHex.length() < 6) colorHex = "0"+colorHex;
 		colorView.setText('#'+colorHex);
 		colorView.setBackgroundColor(color);
@@ -204,10 +207,10 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		//Output number of bits
 		bitNumber = (TextView) findViewById(R.id.bitNumber);		
 		
-		convertNumber(number.toAnyBase(10), DataType.none);
+		convertNumber(number.toAnyBase(10), DATA_TYPE_NONE);
 		decView.selectAll();
 		
-		charView.addTextChangedListener(new TextEditListener(DataType.Ascii, this)
+		charView.addTextChangedListener(new TextEditListener(DATA_TYPE_ASCII, this)
         {
             @Override
             public void afterTextChanged(Editable s)
@@ -217,15 +220,15 @@ public class MainActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-		decView.addTextChangedListener(new TextEditListener(DataType.Decimal, this));
+		decView.addTextChangedListener(new TextEditListener(DATA_TYPE_DECIMAL, this));
 		
-		ipView.addTextChangedListener(new TextEditListener(DataType.IpAddress, this));
+		ipView.addTextChangedListener(new TextEditListener(DATA_TYPE_IP_ADDRESS, this));
 
-		hexView.addTextChangedListener(new TextEditListener(DataType.Hexadecimal, this));
+		hexView.addTextChangedListener(new TextEditListener(DATA_TYPE_HEXADECIMAL, this));
 
-		binView.addTextChangedListener(new TextEditListener(DataType.Binary, this));
+		binView.addTextChangedListener(new TextEditListener(DATA_TYPE_BINARY, this));
 		
-		anyBaseView.addTextChangedListener(new TextEditListener(DataType.AnyBase, this));
+		anyBaseView.addTextChangedListener(new TextEditListener(DATA_TYPE_ANY_BASE, this));
 	}
 
 	@Override
@@ -241,28 +244,28 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		switch(item.getItemId())
 		{
 			case R.id.menuReset:
-				convertNumber("0", DataType.none);	
+				convertNumber("0", DATA_TYPE_NONE);
 				return true;
 				
 			case R.id.menuIncrement:
 				Long li = Long.valueOf(number.toDecimal() + 1);
-				convertNumber(li.toString(), DataType.none);	
+				convertNumber(li.toString(), DATA_TYPE_NONE);
 				return true;
 				
 			case R.id.menuDecrement:
 				Long ld = Long.valueOf(number.toDecimal());
 				if (ld > 0) ld--;
-				convertNumber(ld.toString(), DataType.none);	
+				convertNumber(ld.toString(), DATA_TYPE_NONE);
 				return true;				
 				
 			case R.id.menuShiftLeft:
 				Long lsl = Long.valueOf(number.toDecimal() << 1);
-				convertNumber(lsl.toString(), DataType.none);	
+				convertNumber(lsl.toString(), DATA_TYPE_NONE);
 				return true;
 				
 			case R.id.menuShiftRight:
 				Long lsr = Long.valueOf(number.toDecimal() >> 1);
-				convertNumber(lsr.toString(), DataType.none);	
+				convertNumber(lsr.toString(), DATA_TYPE_NONE);
 				return true;
 		}
 		return super.onMenuItemSelected(featureId, item);
