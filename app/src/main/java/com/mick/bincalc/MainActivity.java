@@ -37,12 +37,6 @@ public class MainActivity extends Activity
 	};
 
 	boolean converting = false;
-	
-	void showMessage(String msg)
-	{
-		Toast t = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-		t.show();
-	}
 
 	public void convertNumber(String numberStr, DataType type)
 	{
