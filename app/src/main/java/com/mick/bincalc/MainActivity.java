@@ -185,18 +185,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Vi
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		 try {
-		        ViewConfiguration config = ViewConfiguration.get(this);
-		        Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
-		        if(menuKeyField != null) {
-		            menuKeyField.setAccessible(true);
-		            menuKeyField.setBoolean(config, false);
-		        }
-		    } catch (Exception ex) {
-		        // Ignore
-		    }
-
 
 		//Input/Output
 		decView = (EditText) findViewById(R.id.decimalEdit);
