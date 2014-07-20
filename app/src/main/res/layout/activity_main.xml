@@ -22,16 +22,13 @@
 
     <EditText
         android:id="@+id/decimalEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
-        android:ems="10"
         android:hint="Decimal number"
         android:inputType="number"
-        android:selectAllOnFocus="true"
-        android:text="0" >
+        android:text="0"
+        style="@style/editTextStyle">
         <requestFocus />
     </EditText>
     
@@ -45,16 +42,13 @@
 
     <EditText
         android:id="@+id/hexEdit"
-        android:layout_width="0dp"
         android:layout_alignRight="@id/centerStrut"
-        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
-        android:ems="12"
+        style="@style/editTextStyle"
         android:hint="Hexadecimal number"
         android:inputType="textCapCharacters|textNoSuggestions"
         android:maxLength="@integer/maxHexLen"
-        android:selectAllOnFocus="true"
         android:text="0"
         android:textAllCaps="true" >
     </EditText>
@@ -69,17 +63,14 @@
 
     <EditText
         android:id="@+id/binEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/editTextStyle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView3"
-        android:ems="10"
         android:hint="Binary number"
         android:inputType="number"
         android:maxLength="@integer/maxBinLen"
         android:maxLines="@integer/maxBinLines"
-        android:selectAllOnFocus="true"
         android:text="0" />
 
     <TextView
@@ -91,16 +82,12 @@
 
     <EditText
         android:id="@+id/charEdit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/editTextStyle"
         android:layout_alignBaseline="@id/hexEdit"
-        android:layout_alignBottom="@id/hexEdit"
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/centerStrut"
-        android:ems="10"
         android:hint="@string/ascii_hint"
         android:inputType="textNoSuggestions"
-        android:selectAllOnFocus="true"
       	 />
 
     <TextView
@@ -123,15 +110,13 @@
 
     <EditText
         android:id="@+id/ipEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/editTextStyle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ipLabel"
-        android:ems="10"
         android:hint="@string/ip"
         android:inputType="text|number"
-        android:selectAllOnFocus="true" />
+        />
     
     <TextView
         android:id="@+id/colorLabel"
@@ -162,15 +147,12 @@
     
     <EditText
         android:id="@+id/baseEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/editTextStyle"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/centerStrut"
         android:layout_below="@+id/baseLabel"
-        android:ems="10"
         android:hint="@string/any_base"
         android:inputType="textCapCharacters|textNoSuggestions"
-        android:selectAllOnFocus="true"
         android:text="0" />
 
     <Spinner
