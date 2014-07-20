@@ -1,7 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menuReset" android:title="Reset" android:showAsAction="always"></item>
-    <item android:id="@+id/menuIncrement" android:title="+1" android:showAsAction="ifRoom"></item>
-    <item android:id="@+id/menuDecrement" android:title="-1" android:showAsAction="ifRoom"></item>
-    <item android:id="@+id/menuShiftLeft" android:title="Shift left" android:showAsAction="ifRoom"></item>
-    <item android:id="@+id/menuShiftRight" android:title="Shift right" android:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/menuReset"
+        android:showAsAction="always"
+        android:title="Reset"/>
+    <item
+        android:id="@+id/menuIncrement"
+        android:showAsAction="ifRoom"
+        android:title="+1"/>
+    <item
+        android:id="@+id/menuDecrement"
+        android:showAsAction="ifRoom"
+        android:title="-1"/>
+    <item
+        android:id="@+id/menuShiftLeft"
+        android:showAsAction="ifRoom"
+        android:title="Shift left"/>
+    <item
+        android:id="@+id/menuShiftRight"
+        android:showAsAction="ifRoom"
+        android:title="Shift right"/>
 </menu>
