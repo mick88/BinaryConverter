@@ -31,7 +31,7 @@ public class MainActivity extends Activity
 			defaultBaseSelection=defaultBase-Number.minBase;	
 	int selectedBase = defaultBase;
 
-	enum DataType
+	public static enum DataType
 	{
 		Decimal, Hexadecimal, Binary, none, Ascii, IpAddress, AnyBase
 	};
@@ -213,129 +213,25 @@ public class MainActivity extends Activity
 		convertNumber(number.toAnyBase(10), DataType.none);
 		decView.selectAll();
 		
-		charView.addTextChangedListener(new TextWatcher()
-		{
-			
-			public void onTextChanged(CharSequence s, int start, int before, int count)
-			{
-				
-			}
-			
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-				
-			}
-			
-			public void afterTextChanged(Editable s)
-			{
-				convertNumber(charView.getText().toString(), DataType.Ascii);
-				charView.selectAll();
-			}
-		});
+		charView.addTextChangedListener(new TextEditListener(DataType.Ascii, this)
+        {
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                super.afterTextChanged(s);
+                charView.selectAll();
+            }
+        });
 
-		decView.addTextChangedListener(new TextWatcher()
-		{
-
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count)
-			{
-
-			}
-
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-
-			}
-
-			public void afterTextChanged(Editable s)
-			{
-				convertNumber(decView.getText().toString(), DataType.Decimal);
-			}
-		});
+		decView.addTextChangedListener(new TextEditListener(DataType.Decimal, this));
 		
+		ipView.addTextChangedListener(new TextEditListener(DataType.IpAddress, this));
+
+		hexView.addTextChangedListener(new TextEditListener(DataType.Hexadecimal, this));
+
+		binView.addTextChangedListener(new TextEditListener(DataType.Binary, this));
 		
-		ipView.addTextChangedListener(new TextWatcher()
-		{
-			
-			public void onTextChanged(CharSequence s, int start, int before, int count)
-			{
-				
-			}
-			
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-				
-			}
-			
-			public void afterTextChanged(Editable s)
-			{
-				convertNumber(ipView.getText().toString(), DataType.IpAddress);
-				
-			}
-		});
-
-		hexView.addTextChangedListener(new TextWatcher()
-		{
-
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count)
-			{
-
-			}
-
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-
-			}
-
-			public void afterTextChanged(Editable s)
-			{
-				convertNumber(hexView.getText().toString(),
-						DataType.Hexadecimal);
-			}
-		});
-
-		binView.addTextChangedListener(new TextWatcher()
-		{
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count)
-			{
-
-			}
-
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-
-			}
-
-			public void afterTextChanged(Editable s)
-			{
-				convertNumber(binView.getText().toString(), DataType.Binary);
-
-			}
-		});
-		
-		anyBaseView.addTextChangedListener(new TextWatcher() {
-			
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-				
-			}
-			
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				
-			}
-			
-			public void afterTextChanged(Editable arg0) 
-			{
-				convertNumber(anyBaseView.getText().toString(), DataType.AnyBase);
-			}
-		});
+		anyBaseView.addTextChangedListener(new TextEditListener(DataType.AnyBase, this));
 	}
 
 	@Override
