@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:allowBackup="true" >
         <activity
-            android:name="com.mick.bincalc.NumberConverter"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main" 
             android:windowSoftInputMode="stateAlwaysVisible">
             <intent-filter>

@@ -19,7 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NumberConverter extends Activity
+public class MainActivity extends Activity
 {
 	EditText decView, hexView, binView, ipView, charView, anyBaseView, colorView;
 	Spinner anyBaseSpinner;
