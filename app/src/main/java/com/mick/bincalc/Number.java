@@ -57,11 +57,6 @@ public class Number
 		fromChar(character.charAt(0));
 	}
 	
-	void strcpy(String to, String from)
-	{
-		to = from;
-	}
-	
 	public String getCharDescription()
 	{
 		if (number >= CHAR_SIZE) return null;
