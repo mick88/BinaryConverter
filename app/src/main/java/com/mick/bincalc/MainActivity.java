@@ -1,11 +1,15 @@
 package com.mick.bincalc;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnItemSelectedListener
+import com.larswerkman.holocolorpicker.ColorPicker;
+import com.larswerkman.holocolorpicker.SVBar;
+import com.larswerkman.holocolorpicker.SaturationBar;
+
+public class MainActivity extends Activity implements OnItemSelectedListener, View.OnClickListener, ColorPicker.OnColorChangedListener
 {
     public static final int
             DATA_TYPE_DECIMAL = 10,
@@ -27,9 +35,16 @@ public class MainActivity extends Activity implements OnItemSelectedListener
             DATA_TYPE_NONE = 0,
             DATA_TYPE_ASCII = -1,
             DATA_TYPE_IP_ADDRESS = -2,
-            DATA_TYPE_ANY_BASE = -3;
+            DATA_TYPE_ANY_BASE = -3,
+            DATA_TYPE_COLOR = -4;
     
-	EditText decView, hexView, binView, ipView, charView, anyBaseView, colorView;
+	EditText decView;
+    EditText hexView;
+    EditText binView;
+    EditText ipView;
+    EditText charView;
+    EditText anyBaseView;
+    TextView colorView;
 	Spinner anyBaseSpinner;
 	TextView bitNumber;
 	Number number=new Number(0);	
@@ -77,6 +92,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 					break;
 				
 				case DATA_TYPE_NONE: //this must fall through to dec
+                case DATA_TYPE_COLOR:
 				case DATA_TYPE_DECIMAL:
 					number = new Number(numberStr, DATA_TYPE_DECIMAL);
 					break;
@@ -150,6 +166,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		while (colorHex.length() < 6) colorHex = "0"+colorHex;
 		colorView.setText('#'+colorHex);
 		colorView.setBackgroundColor(color);
+        colorView.setTextColor(0xffffff ^ color);
 		
 		converting = false;
 	}
@@ -189,7 +206,9 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		charView = (EditText) findViewById(R.id.charEdit);
 		anyBaseView = (EditText) findViewById(R.id.baseEdit);
 		anyBaseSpinner = (Spinner) findViewById(R.id.baseSpinner);
-		colorView = (EditText) findViewById(R.id.colorEdit);
+		colorView = (TextView) findViewById(R.id.colorEdit);
+
+        colorView.setOnClickListener(this);
 		
 		ArrayList<String> bases = new ArrayList<String>();
 		for (int i=Number.minBase; i <= Number.maxBase; i++)
@@ -271,4 +290,35 @@ public class MainActivity extends Activity implements OnItemSelectedListener
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
+
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.colorEdit:
+                int col = (int) number.toDecimal() | 0xff000000;
+                
+                View view = LayoutInflater.from(this).inflate(R.layout.color_picker, null);
+                ColorPicker colorPicker = (ColorPicker) view.findViewById(R.id.colorPicker);
+                colorPicker.setOnColorChangedListener(this);
+                SVBar svBar = (SVBar) view.findViewById(R.id.svbar);
+                colorPicker.addSVBar(svBar);
+                svBar.setColorPicker(colorPicker);
+
+                colorPicker.setColor(col);
+                colorPicker.setShowOldCenterColor(false);
+
+                new AlertDialog.Builder(this)
+                        .setView(view)
+                        .setPositiveButton("Done", null)
+                        .show();
+                break;
+        }
+    }
+
+    public void onColorChanged(int i)
+    {
+        i &= 0xffffff;
+        convertNumber(String.valueOf(i), DATA_TYPE_COLOR);
+    }
 }
