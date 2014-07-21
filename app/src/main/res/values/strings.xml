@@ -1,9 +1,8 @@
 <resources>
 
-    <string name="app_name">BinaryConverter</string>
+    <string name="app_name">Binary Converter</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">Binary Converter</string>
     <string name="bitNumberTxt">1 bit</string>
     <string name="plusOne">+1</string>
     <string name="minusOne">-1</string>
