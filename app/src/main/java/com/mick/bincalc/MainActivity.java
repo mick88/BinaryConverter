@@ -294,6 +294,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Vi
                 svBar.setColorPicker(colorPicker);
 
                 colorPicker.setColor(col);
+                colorPicker.setNewCenterColor(col);
                 colorPicker.setShowOldCenterColor(false);
 
                 new AlertDialog.Builder(this)
