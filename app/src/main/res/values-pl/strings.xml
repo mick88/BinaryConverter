@@ -2,15 +2,8 @@
 
     <string name="app_name">Tłumacz Binarny</string>
     <string name="bitNumberTxt">1 bit</string>
-    <string name="plusOne">+1</string>
-    <string name="minusOne">-1</string>
-    <string name="zeroBtn">0</string>
-    <string name="shiftLeft">&lt;&lt;</string>
-    <string name="shiftRight">>></string>
     <string name="ip">Adres IP</string>
-    <string name="defaultIp">0.0.0.0</string>
     <string name="characters">Znak ASCII:</string>
-    <string name="defaultAscii">\\0</string>
     <string name="iplabel">Adres IP:</string>
     <string name="ascii_hint">Znak ASCII</string>
     <string name="ascii_label">Znak ASCII:</string>
@@ -18,8 +11,6 @@
     <string name="any_base">Dowolna podstawa</string>
     <string name="color_label">Kolor:</string>
     <string name="color_hint">Kolor</string>
-    <string name="shift_left_condensed"><![CDATA[<<]]></string>
-    <string name="shift_right_condensed"><![CDATA[>>]]></string>
 
 
     <string name="decimal">Dziesiętnie:</string>
