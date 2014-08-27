@@ -201,7 +201,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Vi
 		ArrayList<String> bases = new ArrayList<String>();
 		for (int i=Number.minBase; i <= Number.maxBase; i++)
 		{
-			bases.add("base "+i);
+			bases.add(getString(R.string.base, i));
 		}
 		
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bases);

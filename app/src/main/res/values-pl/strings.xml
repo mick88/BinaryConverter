@@ -21,4 +21,14 @@
     <string name="shift_left_condensed"><![CDATA[<<]]></string>
     <string name="shift_right_condensed"><![CDATA[>>]]></string>
 
+
+    <string name="decimal">Dziesiętnie:</string>
+    <string name="decimal_number">Liczba dziesiętna</string>
+    <string name="hexadecimal">Szestnastkowo:</string>
+    <string name="hexadecimal_number">Liczba szestnastkowa</string>
+    <string name="binary">Binarnie:</string>
+    <string name="binary_number">Liczba binarna</string>
+    <string name="base">podstawa %d</string>
+
+
 </resources>
