@@ -20,14 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Decimal:" />
+        android:text="@string/decimal" />
 
     <EditText
         android:id="@+id/decimalEdit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
-        android:hint="Decimal number"
+        android:hint="@string/decimal_number"
         android:inputType="number"
         android:text="0"
         style="@style/editTextStyle">
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/decimalEdit"
-        android:text="Hexadecimal:" />
+        android:text="@string/hexadecimal" />
 
     <EditText
         android:id="@+id/hexEdit"
@@ -48,7 +48,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
         style="@style/editTextStyle"
-        android:hint="Hexadecimal number"
+        android:hint="@string/hexadecimal_number"
         android:inputType="textCapCharacters|textNoSuggestions"
         android:maxLength="@integer/maxHexLen"
         android:text="0"
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/hexEdit"
-        android:text="Binary:" />
+        android:text="@string/binary" />
 
     <EditText
         android:id="@+id/binEdit"
@@ -69,7 +69,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView3"
-        android:hint="Binary number"
+        android:hint="@string/binary_number"
         android:inputType="number"
         android:maxLength="@integer/maxBinLen"
         android:maxLines="@integer/maxBinLines"

@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">Binarny Konwerter</string>
+    <string name="bitNumberTxt">1 bit</string>
+    <string name="ip">Adres IP</string>
+    <string name="characters">Znak ASCII:</string>
+    <string name="iplabel">Adres IP:</string>
+    <string name="ascii_hint">Znak ASCII</string>
+    <string name="ascii_label">Znak ASCII:</string>
+    <string name="anyBase">Dowolna podstawa:</string>
+    <string name="any_base">Dowolna podstawa</string>
+    <string name="color_label">Kolor:</string>
+    <string name="color_hint">Kolor</string>
+
+
+    <string name="decimal">Dziesiętnie:</string>
+    <string name="decimal_number">Liczba dziesiętna</string>
+    <string name="hexadecimal">Szestnastkowo:</string>
+    <string name="hexadecimal_number">Liczba szestnastkowa</string>
+    <string name="binary">Binarnie:</string>
+    <string name="binary_number">Liczba binarna</string>
+    <string name="base">podstawa %d</string>
+
+
+</resources>

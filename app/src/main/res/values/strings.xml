@@ -23,4 +23,12 @@
     <string name="increment">Increment</string>
     <string name="decrement">Decrement</string>
 
+    <string name="decimal">Decimal:</string>
+    <string name="decimal_number">Decimal number</string>
+    <string name="hexadecimal">Hexadecimal:</string>
+    <string name="hexadecimal_number">Hexadecimal number</string>
+    <string name="binary">Binary:</string>
+    <string name="binary_number">Binary number</string>
+    <string name="base">base %d</string>
+
 </resources>
