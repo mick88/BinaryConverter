@@ -7,11 +7,13 @@
     <item
         android:id="@+id/menuIncrement"
         android:showAsAction="always"
-        android:title="+1"/>
+        android:titleCondensed="+1"
+        android:title="@string/increment"/>
     <item
         android:id="@+id/menuDecrement"
         android:showAsAction="always"
-        android:title="-1"/>
+        android:titleCondensed="-1"
+        android:title="@string/decrement"/>
     <item
         android:id="@+id/menuShiftLeft"
         android:showAsAction="always"

@@ -20,5 +20,7 @@
     <string name="color_hint">Color</string>
     <string name="shift_left_condensed"><![CDATA[<<]]></string>
     <string name="shift_right_condensed"><![CDATA[>>]]></string>
+    <string name="increment">Increment</string>
+    <string name="decrement">Decrement</string>
 
 </resources>
