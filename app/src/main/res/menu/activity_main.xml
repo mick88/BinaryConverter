@@ -2,6 +2,7 @@
     <item
         android:id="@+id/menuReset"
         android:showAsAction="always"
+        android:visible="false"
         android:titleCondensed="0"
         android:title="Reset"/>
     <item
