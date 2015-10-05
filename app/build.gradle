@@ -22,5 +22,5 @@ android {
 }
 
 dependencies {
-    compile 'com.larswerkman:HoloColorPicker:1.4'
+    compile 'com.larswerkman:HoloColorPicker:1.5'
 }
