@@ -8,20 +8,24 @@
         android:id="@+id/menuIncrement"
         android:showAsAction="always"
         android:titleCondensed="+1"
+        android:icon="@drawable/plusone"
         android:title="@string/increment"/>
     <item
         android:id="@+id/menuDecrement"
         android:showAsAction="always"
         android:titleCondensed="-1"
+        android:icon="@drawable/minusone"
         android:title="@string/decrement"/>
     <item
         android:id="@+id/menuShiftLeft"
         android:showAsAction="always"
         android:titleCondensed="@string/shift_left_condensed"
+        android:icon="@drawable/left"
         android:title="Shift left"/>
     <item
         android:id="@+id/menuShiftRight"
         android:showAsAction="always"
         android:titleCondensed="@string/shift_right_condensed"
+        android:icon="@drawable/right"
         android:title="Shift right"/>
 </menu>
